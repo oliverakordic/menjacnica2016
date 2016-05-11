@@ -100,5 +100,58 @@ public class GUIKontroler {
 			prozor.setVisible(true);
 		}
 	}
-	
+	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, String prodajniKurs, String kupovniKurs, String srednjiKurs) {
+		try {
+			Valuta valuta = new Valuta();
+
+			// Punjenje podataka o valuti
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNaziv);
+			valuta.setSifra(sifra);
+			valuta.setProdajni(Double.parseDouble(prodajniKurs));
+			valuta.setKupovni(Double.parseDouble(kupovniKurs));
+			valuta.setSrednji(Double.parseDouble(srednjiKurs));
+			
+			// Dodavanje valute u kursnu listu
+			glavniProzor.sistem.dodajValutu(valuta);
+
+			// Osvezavanje glavnog prozora
+			glavniProzor.prikaziSveValute();
+			
+			//Zatvaranje DodajValutuGUI prozora
+			dodajKursGUI.dispose();
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavniProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+
+	public static void obrisiValutu() {
+		try{
+			glavniProzor.sistem.obrisiValutu(valuta);
+			
+			glavniProzor.prikaziSveValute();
+			obrisiKursGUI.dispose();
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(glavniProzor.getContentPane(), e1.getMessage(),
+					"Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	public static double izvrsiZamenu(boolean isSelected, String iznos){
+		try{
+			return GUIKontroler.menjacnica.izvrsiTransakciju(valuta, isSelected, Double.parseDouble(iznos));
+			/*double konacniIznos = 
+					glavniProzor.sistem.izvrsiTransakciju(valuta,
+							rdbtnProdaja.isSelected(), 
+							Double.parseDouble(textFieldIznos.getText()));
+							*/
+		
+			
+		} catch (Exception e1) {
+		JOptionPane.showMessageDialog(glavniProzor.getContentPane(), e1.getMessage(),
+				"Greska", JOptionPane.ERROR_MESSAGE);
+	}
+		return 0;
+	}
 }
