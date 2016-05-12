@@ -12,12 +12,12 @@ import menjacnica.Valuta;
 import menjacnica.gui.models.MenjacnicaTableModel;
 
 public class GUIKontroler {
-	private static MenjacnicaGUI glavniProzor;
-	private static Menjacnica menjacnica;
-	private static Valuta valuta;
-	private static DodajKursGUI dodajKursGUI;
-	private static IzvrsiZamenuGUI izvrsiZamenuGUI;
-	private static ObrisiKursGUI obrisiKursGUI;
+	public static MenjacnicaGUI glavniProzor;
+	public static Menjacnica menjacnica;
+	public static Valuta valuta;
+	public static DodajKursGUI dodajKursGUI;
+	public static IzvrsiZamenuGUI izvrsiZamenuGUI;
+	public static ObrisiKursGUI obrisiKursGUI;
 	/**
 	 * Launch the application.
 	 */
