@@ -187,6 +187,8 @@ public class MenjacnicaGUI extends JFrame {
 		}
 		return mntmNew;
 	}
+	
+	
 	private JMenuItem getMntmSave() {
 		if (mntmSave == null) {
 			mntmSave = new JMenuItem("Save");
